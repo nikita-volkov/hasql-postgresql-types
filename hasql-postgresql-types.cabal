@@ -7,7 +7,7 @@ homepage: https://github.com/nikita-volkov/hasql-postgresql-types
 bug-reports: https://github.com/nikita-volkov/hasql-postgresql-types/issues
 author: Nikita Volkov <nikita.y.volkov@mail.ru>
 maintainer: Nikita Volkov <nikita.y.volkov@mail.ru>
-copyright: (c) 2025, Nikita Volkov
+copyright: (c) 2026, Nikita Volkov
 license: MIT
 license-file: LICENSE
 extra-doc-files:
