@@ -21,7 +21,7 @@ encoder =
   Encoders.custom
     Nothing
     (untag (typeName @a))
-    (Just (untag (baseOid @a), untag (arrayOid @a)))
+    ((,) <$> untag (baseOid @a) <*> untag (arrayOid @a))
     []
     (\_ value -> Write.writeToByteString (binaryEncoder value))
     (to . textualEncoder)
@@ -32,7 +32,7 @@ decoder =
   Decoders.custom
     Nothing
     (untag (typeName @a))
-    (Just (untag (baseOid @a), untag (arrayOid @a)))
+    ((,) <$> untag (baseOid @a) <*> untag (arrayOid @a))
     []
     ( \_ bytes ->
         case PtrPeeker.runVariableOnByteString binaryDecoder bytes of
