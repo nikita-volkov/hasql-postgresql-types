@@ -97,7 +97,7 @@ library
     base >=4.11 && <5,
     hasql ^>=1.10.1,
     lawful-conversions ^>=0.3,
-    postgresql-types,
+    postgresql-types-algebra,
     ptr-peeker ^>=0.1.0.1,
     ptr-poker ^>=0.1.2.16,
     tagged ^>=0.8.9,
