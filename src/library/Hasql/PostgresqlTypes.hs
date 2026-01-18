@@ -2,8 +2,7 @@
 -- This module provides a bridge between PostgreSQL's standard types and the Hasql library,
 -- offering automatic encoder and decoder generation for types that implement the 'IsScalar' constraint.
 module Hasql.PostgresqlTypes
-  ( IsScalar,
-    encoder,
+  ( encoder,
     decoder,
   )
 where
