@@ -7,12 +7,15 @@ module Hasql.PostgresqlTypes
   )
 where
 
+import Data.String (fromString)
+import Data.Tagged (untag)
 import qualified Hasql.Decoders as Decoders
 import qualified Hasql.Encoders as Encoders
-import Hasql.PostgresqlTypes.Prelude
 import PostgresqlTypes.Algebra (IsScalar (..))
 import qualified PtrPeeker
 import qualified PtrPoker.Write as Write
+import qualified TextBuilder
+import Prelude
 
 -- | Hasql value encoder for a PostgreSQL standard type.
 encoder :: forall a. (IsScalar a) => Encoders.Value a
@@ -23,7 +26,7 @@ encoder =
     ((,) <$> untag (baseOid @a) <*> untag (arrayOid @a))
     []
     (\_ value -> Write.writeToByteString (binaryEncoder value))
-    (to . textualEncoder)
+    (TextBuilder.toText . textualEncoder)
 
 -- | Hasql value decoder for a PostgreSQL standard type.
 decoder :: forall a. (IsScalar a) => Decoders.Value a
@@ -35,7 +38,7 @@ decoder =
     []
     ( \_ bytes ->
         case PtrPeeker.runVariableOnByteString binaryDecoder bytes of
-          Left bytesUnconsumed -> Left (onto ("Binary decoder did not consume all input bytes, unconsumed bytes: " ++ show bytesUnconsumed))
-          Right (Left err) -> Left (onto (show err))
+          Left bytesUnconsumed -> Left ("Binary decoder did not consume all input bytes, unconsumed bytes: " <> fromString (show bytesUnconsumed))
+          Right (Left err) -> Left (fromString (show err))
           Right (Right value) -> Right value
     )
