@@ -6,6 +6,7 @@ synopsis: Integration of "hasql" with "postgresql-types"
 description:
   Provides automatic encoder and decoder generation for ["hasql"](https://hackage.haskell.org/package/hasql),
   supporting all PostgreSQL standard types defined in the ["postgresql-types"](https://hackage.haskell.org/package/postgresql-types) package.
+
 homepage: https://github.com/nikita-volkov/hasql-postgresql-types
 bug-reports: https://github.com/nikita-volkov/hasql-postgresql-types/issues
 author: Nikita Volkov <nikita.y.volkov@mail.ru>
