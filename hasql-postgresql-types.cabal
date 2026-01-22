@@ -47,11 +47,9 @@ common base
     MultiParamTypeClasses
     MultiWayIf
     NamedFieldPuns
-    NoFieldSelectors
     NoImplicitPrelude
     NoMonomorphismRestriction
     NumericUnderscores
-    OverloadedRecordDot
     OverloadedStrings
     ParallelListComp
     PatternGuards
@@ -93,7 +91,7 @@ library
   build-depends:
     base >=4.11 && <5,
     hasql ^>=1.10.1,
-    postgresql-types-algebra,
+    postgresql-types-algebra^>=0.1,
     ptr-peeker ^>=0.1.0.1,
     ptr-poker ^>=0.1.2.16,
     tagged ^>=0.8.9,
