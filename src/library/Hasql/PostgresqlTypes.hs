@@ -25,7 +25,7 @@ encoder =
     (untag (typeName @a))
     ((,) <$> untag (baseOid @a) <*> untag (arrayOid @a))
     []
-    (\_ value -> Write.writeToByteString (binaryEncoder value))
+    (\_ value -> Write.toByteString (binaryEncoder value))
     (TextBuilder.toText . textualEncoder)
 
 -- | Hasql value decoder for a PostgreSQL standard type.
