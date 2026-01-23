@@ -5,7 +5,11 @@ category: PostgreSQL, Codecs, Hasql
 synopsis: Integration of "hasql" with "postgresql-types"
 description:
   Provides automatic encoder and decoder generation for ["hasql"](https://hackage.haskell.org/package/hasql),
-  supporting all PostgreSQL standard types defined in the ["postgresql-types"](https://hackage.haskell.org/package/postgresql-types) package.
+  supporting all PostgreSQL types defined in the ["postgresql-types"](https://hackage.haskell.org/package/postgresql-types) package.
+
+  == Motivation
+
+  The standard "hasql" codecs use common Haskell types like `Text`, `DiffTime`, `UTCTime`, etc. However these types do not always map precisely to PostgreSQL types. E.g., the PostgreSQL `interval` type carries information about months, years and microseconds, while the Haskell `DiffTime` type only represents a time difference in picoseconds. Such mismatches can lead to data loss or unexpected behavior. The ["postgresql-types"](https://github.com/nikita-volkov/postgresql-types) library addresses such issues by providing precise Haskell representations for PostgreSQL types. This package integrates it with "hasql". It also provides a class-based polymorphic interface for defining "hasql" `Value` codecs.
 
 homepage: https://github.com/nikita-volkov/hasql-postgresql-types
 bug-reports: https://github.com/nikita-volkov/hasql-postgresql-types/issues
