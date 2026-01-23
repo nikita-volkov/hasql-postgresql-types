@@ -1,6 +1,6 @@
 cabal-version: 3.0
 name: hasql-postgresql-types
-version: 0.1
+version: 0.1.0.1
 category: PostgreSQL, Codecs, Hasql
 synopsis: Integration of "hasql" with "postgresql-types"
 description:
