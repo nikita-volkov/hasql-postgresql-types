@@ -13,16 +13,17 @@ The standard "hasql" codecs use common Haskell types like `Text`, `DiffTime`, `U
 ## Usage
 
 ```haskell
-import Hasql.PostgresqlTypes (encoder, decoder)
+import Hasql.PostgresqlTypes ()
 import qualified PostgresqlTypes as Pt
 import qualified Hasql.Statement as Statement
 import qualified Hasql.Encoders as Encoders
 import qualified Hasql.Decoders as Decoders
+import qualified Hasql.Mapping as Mapping
 
 myStatement :: Statement.Statement Pt.Timestamptz [Pt.Timestamptz]
 myStatement = Statement.preparable sql enc dec
   where
     sql = "SELECT $1::timestamptz"
-    enc = Encoders.param (Encoders.nonNullable encoder)
-    dec = Decoders.rowList (Decoders.column (Decoders.nonNullable decoder))
+    enc = Encoders.param (Encoders.nonNullable Mapping.encoder)
+    dec = Decoders.rowList (Decoders.column (Decoders.nonNullable Mapping.decoder))
 ```
