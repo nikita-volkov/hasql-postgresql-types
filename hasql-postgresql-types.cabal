@@ -94,6 +94,9 @@ library
   import: base
   hs-source-dirs: src/library
   exposed-modules:
+    Hasql.PostgresqlTypes
+
+  other-modules:
     Hasql.PostgresqlTypes.Core
     Hasql.PostgresqlTypes.Mapping
 
