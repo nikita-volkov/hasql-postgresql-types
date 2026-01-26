@@ -15,10 +15,10 @@
 -- > myStatement = Statement.preparable sql enc dec
 -- >   where
 -- >     sql = "SELECT $1::timestamptz"
--- >     enc = Encoders.param (Encoders.nonNullable Mapping.encoderOf)
--- >     dec = Decoders.rowList (Decoders.column (Decoders.nonNullable Mapping.decoderOf))
+-- >     enc = Encoders.param (Encoders.nonNullable Mapping.encoder)
+-- >     dec = Decoders.rowList (Decoders.column (Decoders.nonNullable Mapping.decoder))
 --
--- The 'encoderOf' and 'decoderOf' functions work with any type having an 'IsScalar' instance,
+-- The 'encoder' and 'decoder' functions work with any type having an 'IsScalar' instance,
 -- automatically handling binary encoding/decoding and OID resolution.
 module Hasql.PostgresqlTypes () where
 
