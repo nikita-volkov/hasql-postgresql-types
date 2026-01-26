@@ -20,6 +20,10 @@
 --
 -- The 'encoder' and 'decoder' functions work with any type having an 'IsScalar' instance,
 -- automatically handling binary encoding/decoding and OID resolution.
-module Hasql.PostgresqlTypes () where
+module Hasql.PostgresqlTypes
+  ( Hasql.Mapping.IsScalar,
+  )
+where
 
+import qualified Hasql.Mapping
 import Hasql.PostgresqlTypes.Mapping ()
