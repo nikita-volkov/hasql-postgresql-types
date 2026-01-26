@@ -98,7 +98,6 @@ library
 
   other-modules:
     Hasql.PostgresqlTypes.Core
-    Hasql.PostgresqlTypes.Mapping
 
   build-depends:
     base >=4.11 && <5,
