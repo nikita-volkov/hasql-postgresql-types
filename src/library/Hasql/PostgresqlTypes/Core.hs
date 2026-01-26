@@ -19,7 +19,7 @@
 --
 -- The 'encoder' and 'decoder' functions work with any type having an 'IsScalar' instance,
 -- automatically handling binary encoding/decoding and OID resolution.
-module Hasql.PostgresqlTypes
+module Hasql.PostgresqlTypes.Core
   ( encoder,
     decoder,
   )
