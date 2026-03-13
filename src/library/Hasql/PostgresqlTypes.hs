@@ -185,3 +185,7 @@ instance (KnownNat maxLen) => IsScalar.IsScalar (Varbit maxLen) where
 instance (KnownNat maxLen) => IsScalar.IsScalar (Varchar maxLen) where
   encoder = Core.encoder
   decoder = Core.decoder
+
+instance IsScalar.IsScalar Tsvector where
+  encoder = Core.encoder
+  decoder = Core.decoder
