@@ -1,21 +1,9 @@
 -- |
--- This module provides a bridge between the types defined in the ["postgresql-types"](https://hackage.haskell.org/package/postgresql-types) and the ["hasql"](https://hackage.haskell.org/package/hasql) library,
--- offering automatic encoder and decoder generation for types that implement the 'IsScalar' constraint.
---
--- == Usage Example
---
--- > import Hasql.PostgresqlTypes (encoder, decoder)
--- > import qualified PostgresqlTypes as Pt
--- > import qualified Hasql.Statement as Statement
--- > import qualified Hasql.Encoders as Encoders
--- > import qualified Hasql.Decoders as Decoders
--- >
--- > myStatement :: Statement.Statement Pt.Timestamptz [Pt.Timestamptz]
--- > myStatement = Statement.preparable sql enc dec
--- >   where
--- >     sql = "SELECT $1::timestamptz"
--- >     enc = Encoders.param (Encoders.nonNullable encoder)
--- >     dec = Decoders.rowList (Decoders.column (Decoders.nonNullable decoder))
+-- Internal implementation of the hasql encoder and decoder for types
+-- that implement the 'IsScalar' constraint from
+-- ["postgresql-types-algebra"](https://hackage.haskell.org/package/postgresql-types-algebra).
+-- These are used by the 'IsScalar.IsScalar' instances defined in
+-- "Hasql.PostgresqlTypes".
 --
 -- The 'encoder' and 'decoder' functions work with any type having an 'IsScalar' instance,
 -- automatically handling binary encoding/decoding and OID resolution.
