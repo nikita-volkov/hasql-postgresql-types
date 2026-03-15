@@ -19,6 +19,7 @@ copyright: (c) 2026, Nikita Volkov
 license: MIT
 license-file: LICENSE
 extra-doc-files:
+  CHANGELOG.md
   LICENSE
   README.md
 
