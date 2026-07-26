@@ -1,3 +1,9 @@
+# Upcoming
+
+## Fixes
+
+- Fixed `docsPath` and the `cabal haddock --haddock-for-hackage` invocation in the release workflow so Haddock docs actually get uploaded to Hackage (the v0.2.1.1 release was published without docs due to a path mismatch).
+
 # v0.2.1.1
 
 ## Fixes

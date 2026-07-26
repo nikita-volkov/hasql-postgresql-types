@@ -105,14 +105,17 @@ jobs:
         run: cabal update
 
       - name: Generate documentation for Hackage
-        run: cabal haddock --haddock-for-hackage --enable-doc
+        run: |
+          cabal_file=$(find . -maxdepth 1 -name "*.cabal" -print -quit)
+          package_name=$(awk -F ":[[:space:]]*" 'tolower($1)=="name" { gsub(/^[[:space:]]+|[[:space:]]+$/, "", $2); print $2 }' < "$cabal_file")
+          cabal haddock --haddock-for-hackage "$package_name"
 
       - name: Publish on Hackage
         uses: haskell-actions/hackage-publish@v1.1
         with:
           hackageToken: ${{ secrets.HACKAGE_TOKEN }}
           publish: true
-          docsPath: dist-newstyle/sdist
+          docsPath: dist-newstyle
 
       - name: Commit the version update
         id: commit
