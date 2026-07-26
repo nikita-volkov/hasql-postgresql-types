@@ -101,6 +101,9 @@ jobs:
       - name: Generate package dist
         run: cabal sdist
 
+      - name: Update cabal package index
+        run: cabal update
+
       - name: Generate documentation for Hackage
         run: cabal haddock --haddock-for-hackage --enable-doc
 
