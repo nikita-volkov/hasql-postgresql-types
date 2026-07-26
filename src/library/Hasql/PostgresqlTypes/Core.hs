@@ -1,11 +1,11 @@
 -- |
 -- Internal implementation of the hasql encoder and decoder for types
--- that implement the 'IsScalar' constraint from
+-- that implement the 'IsPrimitive' and 'IsBinaryPrimitive' constraints from
 -- ["postgresql-types-algebra"](https://hackage.haskell.org/package/postgresql-types-algebra).
 -- These are used by the 'IsScalar.IsScalar' instances defined in
 -- "Hasql.PostgresqlTypes".
 --
--- The 'encoder' and 'decoder' functions work with any type having an 'IsScalar' instance,
+-- The 'encoder' and 'decoder' functions work with any type having 'IsPrimitive' and 'IsBinaryPrimitive' instances,
 -- automatically handling binary encoding/decoding and OID resolution.
 module Hasql.PostgresqlTypes.Core
   ( encoder,
@@ -17,7 +17,7 @@ import Data.String (fromString)
 import Data.Tagged (untag)
 import qualified Hasql.Decoders as Decoders
 import qualified Hasql.Encoders as Encoders
-import PostgresqlTypes.Algebra (IsScalar (..))
+import PostgresqlTypes.Algebra (IsBinaryPrimitive (..), IsPrimitive (..))
 import qualified PtrPeeker
 import qualified PtrPoker.Write as Write
 import qualified TextBuilder
@@ -25,9 +25,9 @@ import Prelude
 
 -- | Hasql value encoder for a PostgreSQL standard type.
 --
--- Generates a Hasql value encoder for any type implementing 'IsScalar'.
+-- Generates a Hasql value encoder for any type implementing 'IsPrimitive' and 'IsBinaryPrimitive'.
 -- The encoder handles type resolution, and binary encoding automatically.
-encoder :: forall a. (IsScalar a) => Encoders.Value a
+encoder :: forall a. (IsPrimitive a, IsBinaryPrimitive a) => Encoders.Value a
 encoder =
   Encoders.custom
     Nothing
@@ -39,9 +39,9 @@ encoder =
 
 -- | Hasql value decoder for a PostgreSQL standard type.
 --
--- Generates a Hasql value decoder for any type implementing 'IsScalar'.
+-- Generates a Hasql value decoder for any type implementing 'IsPrimitive' and 'IsBinaryPrimitive'.
 -- The decoder handles type resolution, and binary decoding with proper error handling.
-decoder :: forall a. (IsScalar a) => Decoders.Value a
+decoder :: forall a. (IsPrimitive a, IsBinaryPrimitive a) => Decoders.Value a
 decoder =
   Decoders.custom
     Nothing

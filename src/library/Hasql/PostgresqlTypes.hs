@@ -62,6 +62,10 @@ instance IsScalar.IsScalar Circle where
   encoder = Core.encoder
   decoder = Core.decoder
 
+instance IsScalar.IsScalar Citext where
+  encoder = Core.encoder
+  decoder = Core.decoder
+
 instance IsScalar.IsScalar Date where
   encoder = Core.encoder
   decoder = Core.decoder
@@ -71,6 +75,10 @@ instance IsScalar.IsScalar Float4 where
   decoder = Core.decoder
 
 instance IsScalar.IsScalar Float8 where
+  encoder = Core.encoder
+  decoder = Core.decoder
+
+instance IsScalar.IsScalar Geometry where
   encoder = Core.encoder
   decoder = Core.decoder
 
@@ -126,7 +134,7 @@ instance IsScalar.IsScalar Money where
   encoder = Core.encoder
   decoder = Core.decoder
 
-instance (IsMultirangeElement element) => IsScalar.IsScalar (Multirange element) where
+instance (IsMultirangeElement element, IsBinaryPrimitive element) => IsScalar.IsScalar (Multirange element) where
   encoder = Core.encoder
   decoder = Core.decoder
 
@@ -150,7 +158,7 @@ instance IsScalar.IsScalar Polygon where
   encoder = Core.encoder
   decoder = Core.decoder
 
-instance (IsRangeElement element) => IsScalar.IsScalar (Range element) where
+instance (IsRangeElement element, IsBinaryPrimitive element) => IsScalar.IsScalar (Range element) where
   encoder = Core.encoder
   decoder = Core.decoder
 
