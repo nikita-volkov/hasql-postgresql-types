@@ -1,3 +1,9 @@
+# Upcoming
+
+## Fixes
+
+- Fixed the release workflow so that Haddock documentation is generated and uploaded to Hackage again during release.
+
 # v0.2.1.0
 
 ## Non-breaking

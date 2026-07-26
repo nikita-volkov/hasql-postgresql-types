@@ -62,16 +62,10 @@ jobs:
     uses: ./.github/workflows/build.yaml
     secrets: inherit
 
-  generate-docs:
-    needs: validate-version
-    uses: nikita-volkov/haskell-hackage-lib-github-actions-workflows/.github/workflows/generate-docs.yaml@v4
-    secrets: inherit
-
   release:
     needs:
       - validate-changelog
       - build
-      - generate-docs
     runs-on: ubuntu-latest
     environment:
       name: hackage
@@ -107,12 +101,15 @@ jobs:
       - name: Generate package dist
         run: cabal sdist
 
+      - name: Generate documentation for Hackage
+        run: cabal haddock --haddock-for-hackage --enable-doc
+
       - name: Publish on Hackage
         uses: haskell-actions/hackage-publish@v1.1
         with:
           hackageToken: ${{ secrets.HACKAGE_TOKEN }}
           publish: true
-          docsPath: dist-newstyle
+          docsPath: dist-newstyle/sdist
 
       - name: Commit the version update
         id: commit
