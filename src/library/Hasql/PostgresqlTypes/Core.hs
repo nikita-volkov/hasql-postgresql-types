@@ -18,10 +18,10 @@ import Data.Tagged (untag)
 import qualified Hasql.Decoders as Decoders
 import qualified Hasql.Encoders as Encoders
 import PostgresqlTypes.Algebra (IsBinaryPrimitive (..), IsPrimitive (..))
+import Prelude
 import qualified PtrPeeker
 import qualified PtrPoker.Write as Write
 import qualified TextBuilder
-import Prelude
 
 -- | Hasql value encoder for a PostgreSQL standard type.
 --
