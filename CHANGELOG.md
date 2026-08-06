@@ -1,3 +1,7 @@
+# v0.2.1.3
+
+- Added support for Hasql 2.0.
+
 # v0.2.1.2
 
 ## Fixes
