@@ -1,3 +1,7 @@
+# v0.2.1.4
+
+- Added support for Hasql 2.1 and hasql-mapping 0.1.1.
+
 # v0.2.1.3
 
 - Added support for Hasql 2.0.
